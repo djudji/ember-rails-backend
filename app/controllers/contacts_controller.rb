@@ -20,7 +20,7 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, status: :created, location: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
+      render json: { errors: [@contact.errors] }, status: :unprocessable_entity
     end
   end
 
@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
     if @contact.update(contact_params)
       render json: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
+      render json: { errors: [@contact.errors] }, status: :unprocessable_entity
     end
   end
 
