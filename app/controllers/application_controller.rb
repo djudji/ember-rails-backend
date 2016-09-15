@@ -17,6 +17,7 @@ class ApplicationController < ActionController::API
   private
 
   def find_related_object(data)
-    data[:type].titlecase.singularize.constantize.find(data[:id])
+    klass = data[:type].underscore.classify.safe_constantize
+    klass.find(data[:id]) if klass
   end
 end

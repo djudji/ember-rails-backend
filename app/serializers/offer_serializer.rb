@@ -3,4 +3,5 @@ class OfferSerializer < ActiveModel::Serializer
   has_many :tasks
   has_many :contacts
   has_one :project
+  has_many :notes
 end

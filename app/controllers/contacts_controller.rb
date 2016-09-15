@@ -46,7 +46,9 @@ class ContactsController < ApplicationController
   end
 
   def contact_params
-    params.require(:data).require(:attributes).permit(:family_name, :given_name, :company_id, :title, :phone, :email,
-                                                      :website, :address, :customer_id, :additional_info)
+    params.require(:data).require(:attributes).permit(
+      :family_name, :given_name, :company_id, :title, :phone, :email,
+      :website, :address, :customer_id, :additional_info
+    )
   end
 end
