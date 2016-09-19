@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authorize_request # , except: [:new, :create]
+  before_action :authorize_request
 
   def relationship_params
     associations = {}

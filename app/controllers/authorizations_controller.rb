@@ -10,7 +10,6 @@ class AuthorizationsController < ActionController::API
       client_secret: ENV['GOOGLE_CLIENT_SECRET'],
       redirect_uri: "#{(ENV['HEROKU_URL'] || 'http://localhost:4200')}/oauth2callback"
     }).to_authorization
-    debugger
     client.grant_type = 'authorization_code'
     client.code = params['authorization_code']
     token = client.fetch_access_token!
