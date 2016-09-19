@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
-  before_action :authorize_request
+  before_action :authorize_request # , except: [:new, :create]
 
   def relationship_params
     associations = {}
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   def authorize_request
     /^Bearer (?<bearer>.*)$/ =~ request.headers['Authorization']
     if AuthToken.where(token: bearer).count.zero?
-      render json: { errors: [{ title: 'You need to log in before that action' }] }, status: :unauthorized
+      render json: { error: 'You need to authorize to do that' }, status: :unauthorized
     end
   end
 
