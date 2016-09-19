@@ -26,6 +26,7 @@ class CompaniesController < ApplicationController
 
   # PATCH/PUT /companies/1
   def update
+    @company.contacts = relationship_params[:contacts] if relationship_params[:contacts]
     if @company.update(company_params)
       render json: @company
     else
